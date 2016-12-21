@@ -1,0 +1,26 @@
+  <td>
+    <span><%- id %></span>
+  </td>
+  <td><%- firstName %> <%- middleName %> <%- lastName %></td>
+  <td><%- party %></td>
+  <td>
+    <% if (!!vicePres_1.firstName && !!vicePres_2.firstName) { %>
+      1. <%- vicePres_1.firstName %> <%- vicePres_1.middleName %> <%- vicePres_1.lastName %><br />
+    <% } else { %>
+      <%- vicePres_1.firstName %> <%- vicePres_1.middleName %> <%- vicePres_1.lastName %><br />
+    <% } %>
+
+    <% if (!!vicePres_2.firstName) { %>
+      2. <%- vicePres_2.firstName %> <%- vicePres_2.middleName %> <%- vicePres_2.lastName %><br />
+    <% } %>
+
+    <% if (!!vicePres_3.firstName) { %>
+      3. <%- vicePres_3.firstName %> <%- vicePres_3.middleName %> <%- vicePres_3.lastName %>
+    <% } %>
+  </td>
+  <td>
+    <button class="btn btn-small js-delete">
+      <i class="icon-remove"></i>
+      Delete
+    </button>
+  </td>

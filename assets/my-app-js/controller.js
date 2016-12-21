@@ -1,0 +1,7 @@
+USPresidents.Controller = {
+
+    deleteView : function() {
+
+    }
+
+};
