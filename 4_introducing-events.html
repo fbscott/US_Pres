@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Marionette Contact Manager</title>
+<link href="./assets/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/css/application.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <span class="brand">Contact manager</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <p>Below is static content in the web page. It gets replaced by our app as soon as we start it.</p>
+</div>
+
+<div id="mainRegion" class="container">
+  <p>Loading...</p>
+</div>
+
+<!-- Templates -->
+<script type="text/template" id="contact-view">
+  <p><%- firstName %> <%- lastName %></p>
+</script>
+<!-- /Templates -->
+
+<!-- Javascript libraries -->
+<script src="./assets/js/vendor/jquery.js"></script>
+<!-- <script src="./assets/js/vendor/json2.js"></script> -->
+<script src="./assets/js/vendor/underscore.js"></script>
+<script src="./assets/js/vendor/backbone.js"></script>
+<script src="./assets/js/vendor/backbone.marionette.js"></script>
+<!-- End Javascript libraries -->
+
+<script type="text/javascript">
+  var ContactManager = ContactManager || new Marionette.Application();
+
+  ContactManager.addRegions({
+    mainRegion : '#mainRegion'
+  });
+
+  ContactManager.ContactModel = Backbone.Model.extend({
+    defaults : {
+      firstName   : '',
+      lastName    : '',
+      phoneNumber : 'No Phone Number'
+    }
+  });
+
+  ContactManager.ContactView = Marionette.ItemView.extend({
+    template : '#contact-view',
+    events : {
+      "mouseover p" : "consoleLogPhoneNumber"
+    },
+    consoleLogPhoneNumber : function() {
+      console.log(this.model.escape("phoneNumber"));
+    }
+  });
+
+  ContactManager.on('start', function() {
+    var alice = new ContactManager.ContactModel({
+      firstName   : 'Alice',
+      lastName    : 'Eve',
+      phoneNumber : '555-1234'
+    });
+
+    var aliceView = new ContactManager.ContactView({
+      model : alice
+    });
+
+    ContactManager.mainRegion.show(aliceView);
+  });
+
+  ContactManager.start();
+</script>
+
+</body>
+</html>

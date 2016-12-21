@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Marionette Contact Manager</title>
+<link href="./assets/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/css/application.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <span class="brand">Contact manager</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <p>Below is static content in the web page. It gets replaced by our app as soon as we start it.</p>
+</div>
+
+<div id="mainRegion" class="container">
+  <p>Loading...</p>
+</div>
+
+<!-- Templates -->
+<script type="text/template" id="contact-list-item">
+  <%- firstName %> <%- lastName %>
+</script>
+<!-- /Templates -->
+
+<!-- Javascript libraries -->
+<script src="./assets/js/vendor/jquery.js"></script>
+<!-- <script src="./assets/js/vendor/json2.js"></script> -->
+<script src="./assets/js/vendor/underscore.js"></script>
+<script src="./assets/js/vendor/backbone.js"></script>
+<script src="./assets/js/vendor/backbone.marionette.js"></script>
+<!-- End Javascript libraries -->
+
+<script type="text/javascript">
+  var ContactManager = ContactManager || new Marionette.Application();
+
+  ContactManager.addRegions({
+    mainRegion : '#mainRegion'
+  });
+
+  ContactManager.ContactModel = Backbone.Model.extend({});
+
+  ContactManager.ContactCollection = Backbone.Collection.extend({
+    model : ContactManager.ContactModel,
+    // To sort list alphabetically
+    comparator : function(sort) {
+      return sort.get("firstName") + " " + sort.get("lastName");
+    }
+  });
+
+  ContactManager.ContactItemView = Marionette.ItemView.extend({
+    tagName : 'li',
+    template : '#contact-list-item'
+  });
+
+  ContactManager.ContactsView = Marionette.CollectionView.extend({
+    tagName : 'ul',
+    childView : ContactManager.ContactItemView
+  });
+
+  ContactManager.on('start', function() {
+    var hotWomen = new ContactManager.ContactCollection([
+      {
+        firstName   : 'Rebecca',
+        lastName    : 'Romijn'
+      },
+      {
+        firstName   : 'Stacey',
+        lastName    : 'Dash'
+      },
+      {
+        firstName   : 'Elizabeth',
+        lastName    : 'Hurley'
+      },
+      {
+        firstName   : 'Jennifer',
+        lastName    : 'Garner'
+      },
+      {
+        firstName   : 'Jennifer',
+        lastName    : 'Aniston'
+      },
+      {
+        firstName   : 'Alice',
+        lastName    : 'Eve'
+      },
+      {
+        firstName   : 'Annabelle',
+        lastName    : 'Wallace'
+      }
+    ]);
+
+    var contactsListView = new ContactManager.ContactsView({
+      collection : hotWomen
+    });
+
+    ContactManager.mainRegion.show(contactsListView);
+  });
+
+  ContactManager.start();
+</script>
+
+</body>
+</html>
