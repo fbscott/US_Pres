@@ -1,21 +1,21 @@
   <td>
-    <span><%- id %></span>
+    <span><%- data.id %></span>
   </td>
-  <td><%- firstName %> <%- middleName %> <%- lastName %></td>
-  <td><%- party %></td>
+  <td><%- data.firstName %> <%- data.middleName %> <%- data.lastName %></td>
+  <td><%- data.party %></td>
   <td>
-    <% if (!!vicePres_1.firstName && !!vicePres_2.firstName) { %>
-      1. <%- vicePres_1.firstName %> <%- vicePres_1.middleName %> <%- vicePres_1.lastName %><br />
+    <% if (!!data.vicePres_1.firstName && !!data.vicePres_2.firstName) { %>
+      1. <%- data.vicePres_1.firstName %> <%- data.vicePres_1.middleName %> <%- data.vicePres_1.lastName %><br />
     <% } else { %>
-      <%- vicePres_1.firstName %> <%- vicePres_1.middleName %> <%- vicePres_1.lastName %><br />
+      <%- data.vicePres_1.firstName %> <%- data.vicePres_1.middleName %> <%- data.vicePres_1.lastName %><br />
     <% } %>
 
-    <% if (!!vicePres_2.firstName) { %>
-      2. <%- vicePres_2.firstName %> <%- vicePres_2.middleName %> <%- vicePres_2.lastName %><br />
+    <% if (!!data.vicePres_2.firstName) { %>
+      2. <%- data.vicePres_2.firstName %> <%- data.vicePres_2.middleName %> <%- data.vicePres_2.lastName %><br />
     <% } %>
 
-    <% if (!!vicePres_3.firstName) { %>
-      3. <%- vicePres_3.firstName %> <%- vicePres_3.middleName %> <%- vicePres_3.lastName %>
+    <% if (!!data.vicePres_3.firstName) { %>
+      3. <%- data.vicePres_3.firstName %> <%- data.vicePres_3.middleName %> <%- data.vicePres_3.lastName %>
     <% } %>
   </td>
   <td>

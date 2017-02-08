@@ -37,49 +37,13 @@
 <script src="./assets/js/vendor/backbone.marionette.js"></script>
 <!-- <script src="./assets/js/vendor/backbone.stickit.js"></script> -->
 <script src="./assets/my-app-js/core/template-utilities.js"></script>
+<!-- <script src="./assets/my-app-js/core/app-utilities.js"></script> -->
+<!-- <script src="./assets/my-app-js/core/app-behaviors.js"></script> -->
 <!--end source scripts core-->
 
 <!--template scripts-->
 <script type="text/html" id="president-table-headers" srcTmpl="./assets/my-app-js/templates/president-table-headers.html"></script>
-<!-- <script type="text/template" id="president-table-headers">
-  <thead>
-  <tr>
-    <th>#:</th>
-    <th>Name:</th>
-    <th>Party:</th>
-    <th>Vice President:</th>
-    <th>Delete</th>
-  </tr>
-  </thead>
-  <tbody></tbody>
-</script> -->
-<script type="text/html" id="president-table-row" srcTmpl="./assets/my-app-js/templates/president-table-row.html"></script>
-<!-- <script type="text/template" id="president-table-row">
-  <td>
-    <span><%- id %></span>
-  </td>
-  <td><%- firstName %> <%- middleName %> <%- lastName %></td>
-  <td><%- party %></td>
-  <td>
-    <% if (!!vicePres_1.firstName && !!vicePres_2.firstName) { %>
-      1. <%- vicePres_1.firstName %> <%- vicePres_1.middleName %> <%- vicePres_1.lastName %><br />
-    <% } else { %>
-      <%- vicePres_1.firstName %> <%- vicePres_1.middleName %> <%- vicePres_1.lastName %><br />
-    <% } %>
-    <% if (!!vicePres_2.firstName) { %>
-      2. <%- vicePres_2.firstName %> <%- vicePres_2.middleName %> <%- vicePres_2.lastName %><br />
-    <% } %>
-    <% if (!!vicePres_3.firstName) { %>
-      3. <%- vicePres_3.firstName %> <%- vicePres_3.middleName %> <%- vicePres_3.lastName %>
-    <% } %>
-  </td>
-  <td>
-    <button class="btn btn-small js-delete">
-      <i class="icon-remove"></i>
-      Delete
-    </button>
-  </td>
-</script> -->
+<script type="text/html" id="president-table-row"     srcTmpl="./assets/my-app-js/templates/president-table-row.html"></script>
 <!--end template scripts-->
 
 <!--source scripts jsapp-->
@@ -89,7 +53,6 @@
 <script src="./assets/my-app-js/models/presidentModel.js"></script>
 <script src="./assets/my-app-js/collections/presidentCollection.js"></script>
 <script src="./assets/my-app-js/views/presidentItemView.js"></script>
-<!-- <script src="./assets/my-app-js/views/presidentsTableView.js"></script> -->
 <script src="./assets/my-app-js/views/presidentCompositeView.js"></script>
 <script src="./assets/my-app-js/my-app.js"></script>
 <!--end source scripts jsapp-->
